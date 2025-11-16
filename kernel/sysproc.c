@@ -13,7 +13,7 @@ sys_exit(void)
   int n;
   argint(0, &n);
   exit(n);
-  return 0;  // not reached
+  return 0; // not reached
 }
 
 uint64
@@ -44,7 +44,7 @@ sys_sbrk(void)
 
   argint(0, &n);
   addr = myproc()->sz;
-  if(growproc(n) < 0)
+  if (growproc(n) < 0)
     return -1;
   return addr;
 }
@@ -56,12 +56,14 @@ sys_sleep(void)
   uint ticks0;
 
   argint(0, &n);
-  if(n < 0)
+  if (n < 0)
     n = 0;
   acquire(&tickslock);
   ticks0 = ticks;
-  while(ticks - ticks0 < n){
-    if(killed(myproc())){
+  while (ticks - ticks0 < n)
+  {
+    if (killed(myproc()))
+    {
       release(&tickslock);
       return -1;
     }
@@ -112,3 +114,12 @@ sys_sysinfo(void)
   return 0;
 }
 
+sys_trace(void)
+{
+    int mask;
+    struct proc *p = myproc();
+    // argint lấy tham số int thứ 0 từ trapframe (user)
+    argint(0, &mask);
+    p->tracemask = mask; // Lưu giá trị mask vào PCB của tiến trình hiện tại
+    return 0;
+}
