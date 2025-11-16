@@ -97,9 +97,10 @@ sys_uptime(void)
 uint64
 sys_trace(void)
 {
-  int mask;
-  // argint lấy tham số int thứ 0 từ trapframe (user)
-  argint(0, &mask);
-  myproc()->trace_mask = mask; // Lưu giá trị mask vào PCB của tiến trình hiện tại
-  return 0;
+    int mask;
+    struct proc *p = myproc();
+    // argint lấy tham số int thứ 0 từ trapframe (user)
+    argint(0, &mask);
+    p->tracemask = mask; // Lưu giá trị mask vào PCB của tiến trình hiện tại
+    return 0;
 }

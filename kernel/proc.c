@@ -320,6 +320,8 @@ int fork(void)
 
   pid = np->pid;
 
+  np->tracemask = p->tracemask;
+
   release(&np->lock);
 
   acquire(&wait_lock);
