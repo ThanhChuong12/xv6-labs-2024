@@ -104,5 +104,5 @@ struct proc {
   struct file *ofile[NOFILE];  // Open files
   struct inode *cwd;           // Current directory
   char name[16];               // Process name (debugging)
-  int tracemask;               // Bitmask: bit i = 1 if syscall number i is traced for this process
+  int trace_mask;               // Bitmask: bit i = 1 if syscall number i is traced for this process
 };
