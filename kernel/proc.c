@@ -320,7 +320,7 @@ int fork(void)
 
   pid = np->pid;
 
-  np->tracemask = p->tracemask;
+  np->trace_mask = p->trace_mask;
 
   release(&np->lock);
 

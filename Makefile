@@ -196,7 +196,7 @@ UPROGS=\
 	$U/_zombie\
 	$U/_xargs\
 	$U/_find\
-	$U/_sysinfotest
+	$U/_sysinfotest\
 	$U/_trace\
 
 

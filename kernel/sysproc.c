@@ -114,12 +114,13 @@ sys_sysinfo(void)
   return 0;
 }
 
+uint64
 sys_trace(void)
 {
     int mask;
     struct proc *p = myproc();
     // argint lấy tham số int thứ 0 từ trapframe (user)
     argint(0, &mask);
-    p->tracemask = mask; // Lưu giá trị mask vào PCB của tiến trình hiện tại
+    p->trace_mask = mask; // Lưu giá trị mask vào PCB của tiến trình hiện tại
     return 0;
 }
